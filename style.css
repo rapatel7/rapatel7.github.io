@@ -590,6 +590,7 @@ z-index: -1; /* Makes the border underneath the "Me" photo */
 /* Editing all of our contact items image size */
 #contact .contact-items{
     width: 100%;
+    display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     margin: 0;
