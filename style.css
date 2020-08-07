@@ -1,0 +1,932 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:300,400,700&display=swap');
+
+/* Removing the gaps in the website */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Setting up the font and font size */
+html{
+    font-size: 10px;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Removed the underline under Portfolio */
+a{
+    text-decoration: none;
+}
+
+/* Setting our content in the center */
+.container{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* For any image, we will apply this size */
+img{
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    object-fit: cover;
+}
+
+/* For any paragraph we will apply this style */
+p{
+    color: black;
+    font-size: 1.4rem;
+    margin-top: 5px;
+    line-height: 2.5rem;
+    font-weight: 300;
+    letter-spacing: .05rem;
+}
+
+/* Section Heading color and size style in project section */
+ .section-title{
+    font-size: 4rem;
+    font-weight: 300;
+    color: black;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    text-align: center;
+}
+
+/* Make letters GUA crimson red style */
+ .section-title span{
+    color: crimson;
+}
+
+/* Styling our buttons */
+.cta{
+    display: inline-block;
+    padding: 10px 30px;
+    color: white;
+    background-color: transparent;
+    border: 2px solid crimson;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    margin-top: 30px;
+    transition: .3s ease;
+    transition-property: background-color, color;
+}
+/* Color of the button after curser is hovering on it */
+.cta:hover{
+    color: white;
+    background-color: crimson;
+}
+
+/* Color of the header on the footer section "rahul patel" */
+.brand h1{
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: white;
+}
+
+/* Making the color crimson on the span in the footer section */
+.brand h1 span{
+    color: crimson;
+}
+
+/* Header Section */
+
+/* Adjusting the header position */
+#header{
+    position: fixed;
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: auto;
+}
+
+/* Adjusting the header position and color */
+#header .header{
+    min-height: 8vh;
+    background-color: rgba(31, 30, 30, 0.24);
+    transition: .3s ease background-color;
+}
+
+/* Setting the header bar at the top of the screen */
+.header .nav-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    max-width: 1300px;
+    padding: 0 10px;
+}
+
+/* Creating the side bar and setting the location of the list */
+#header .nav-list ul{
+    list-style: none;
+    position: absolute;
+    background-color: rgb(31, 30, 30);
+    width: 100vw;
+    height: 100vh;
+    left: 100%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s ease left;
+}
+
+/* Making the hamburger menu pop up when user clicks on it */
+#header .nav-list ul.active{
+    left: 0%;
+}
+
+/* Making the side bar menu text better */
+#header .nav-list ul a{
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: .2rem;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    padding: 20px;
+    display: block;
+}
+
+/* Animation of hovering over the side bar menu */
+#header .nav-list ul a::after{
+    content: attr(data-after);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: rgba(240, 248, 255, 0.021);
+    font-size: 13rem;
+    letter-spacing: 50px;
+    z-index: -1;
+    transition: .3s ease letter-spacing;
+}
+
+/* Whenever hovering over the ul a section we will see it */
+#header .nav-list ul li:hover a::after{
+    transform: translate(-50%, -50%) scale(1);
+    letter-spacing: initial;
+}
+
+/* Changing the color when we hover in the hamburger menu */
+#header .nav-list ul li:hover a{
+    color: crimson;
+}
+
+/* Making the hamburger */
+#header .hamburger{
+    height: 60px;
+    width: 60px;
+    display: inline-block;
+    border: 3px solid white;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    cursor: pointer;
+    transform: scale(.8);
+    margin-right: 20px;
+}
+
+/* Making the effect on the hamburger */
+#header .hamburger::after{
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    border: 3px solid white;
+    animation: hamburger_pulse 1s ease infinite;
+}
+
+/* Making the hambburger bar */
+#header .hamburger .bar{
+    height: 2px;
+    width: 30px;
+    position: relative;
+    background-color: white;
+    z-index: -1;
+}
+
+#header .hamburger .bar::after,
+/* Transition for the hamburger */
+#header .hamburger .bar::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    background-color: white;
+    transition: .3s ease;
+    transition-property: top, bottom;
+}
+
+/* Created white bar on hamburger */
+#header .hamburger .bar::after{
+    top: 8px;
+}
+
+/* Created white bar on hamburger */
+#header .hamburger .bar::before{
+    bottom: 8px;
+}
+
+/* Getting rid of the 3 lines when clicking on the hamburger menu */
+#header .hamburger.active .bar::before{
+    bottom: 0;
+}
+#header .hamburger.active .bar::after{
+    top: 0;
+}
+
+
+
+/* End of Header Section */
+
+/* Hello Section */
+#hello{
+    background-image: url(./Images/First\ background\ Photo.jpg);
+    background-size: cover;
+    background-position: top center;
+    position: relative;
+    z-index: 1;
+}
+/* Black overlay on the whole page */
+#hello::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: .6;
+    z-index: -1; /* Allows button to be on top on overlay */
+}
+
+/* Moving the text to the left of the screen */
+#hello .hello{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+    justify-content: flex-start;
+}
+/* Displays white text to introduction with animation */
+#hello h1{
+    display: block;
+    width: fit-content;
+    font-size: 4rem;
+    position: relative;
+    color: transparent;
+    animation: text_reveal .5s ease forwards;
+    animation-delay: 1s;
+}
+
+/* Display the animation TEXT one by one on the hello page */
+#hello h1:nth-child(1){
+    animation-delay: 1s;
+}
+#hello h1:nth-child(2){
+    animation-delay: 2s;
+}
+#hello h1:nth-child(3){
+    animation: text_reveal_name .5s ease forwards;
+    animation-delay: 3s;
+}
+
+/* Adds red box over the h1 line text for animation in Keyframes */
+#hello h1 span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: crimson;
+    animation: text_reveal_box 1s ease;
+    animation-delay: .3s;
+}
+
+/* Display the animation RED BOX one by one on the hello page */
+#hello h1:nth-child(1) span{
+    animation-delay: .5s;
+}
+#hello h1:nth-child(2) span{
+    animation-delay: 1.5s;
+}
+#hello h1:nth-child(3) span{
+    animation-delay: 2.5s;
+}
+
+/* End Hello Section */
+
+/* Services Section */
+
+/* Moves the icons and column to the middle and create space form the first section */
+#services .services{
+    flex-direction: column;
+    text-align: center;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 100px 0;
+}
+
+/* Paragraph font size and location */
+#services .service-top {
+    max-width: 500px;
+    margin:m0 auto;
+}
+ 
+/* Styling the cards */
+#services .service-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+/* Service card size */
+#services .service-item{
+    flex-basis: 200px;
+    display: flexbox;
+    text-align: center;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 10px;
+    background-image: url(./Images/coding.jpg);
+    background-size: cover;
+    margin: 8px 5%;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Background overlay dim on the cards */
+#services .service-item::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(60deg, #29323c, 0%, #485563 100%);
+    opacity: .7;
+    z-index: -1;
+}
+
+/* Size of the coding language service tag */
+#services .service-bottom .icon{
+    height: 80px;
+    width: 80px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+/* Size of the coding language TEXT */
+#services .service-item h2{
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+/* Size of the PARAGRAPH */
+#services .service-item p{
+    color: white;
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+}
+
+/* End Services Section */
+
+/* Projects Section */
+
+/* Aligning the project section */
+#projects .projects{
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 0;
+}
+
+/* Aligning the h1 in projects */
+#projects .projects-header h1{
+margin-bottom: 50px;
+}
+
+/* Aligning all projects section */
+#projects .all-projects{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Adjusting the projects item section */
+#projects .project-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+/* Aligning and editing the color of project info section */
+#projects .project-info{
+    padding: 30px;
+    flex-basis: 50%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    
+}
+ /* Adjusting the font of the main Heading in project section */
+#projects .project-info h1{
+    color: white;
+    font-size: 4rem;
+    font-weight: 500;
+}
+
+/* Adjusting the font and margins of Header 2 in project section */
+#projects .project-info h2{
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+/* Color of paragraphs in projects section */
+#projects .project-info p{
+    color: white;
+}
+
+/* Re-sizing the images in the projects section */
+#projects .project-img{
+    flex-basis: 50%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Making a black overlay on the images in projects section */
+#projects .project-img:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    opacity: .7;
+    }
+    
+    /* Transition section of hovering over the image  */
+    #projects .project-img{
+        transition: .3s ease transform;
+    }
+    #projects .project-item:hover{
+        transform: scale(1.01);
+    }
+
+/* End Projects Section */
+
+/* About Section */
+
+/* Adjusting the About Me Page and adjusting where my "Me" photo is */
+#about .about{
+    flex-direction: column-reverse;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px;
+}
+
+/* Editing the "Me" image section in the About Page */
+#about .col-left{
+width: 250px;
+height: 360px;
+}
+
+/* Editing the Header in the About Page */
+#about .col-right{
+    width: 100%;
+}
+
+/* Editing the second header in the About Page "Computer Science Student" */
+#about .col-right h2{
+font-size: 1.8rem;
+font-weight: 550;
+letter-spacing: .2rem;
+margin-bottom: 10px;
+}
+
+/* Editing the paragraph in the About Page */
+#about .col-right p{
+    margin-bottom: 20px;
+}
+
+/* Adjusting the color and area of the button on the About Me page */
+#about .col-right .cta{
+color: black;
+margin-bottom: 50px;
+padding: 10px 20px;
+font-size: 2rem;
+}
+
+/* Making the red border appear by the "Me" photo on the about page */
+#about .col-left .about-img{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    border: 10px solid white;
+}
+
+/* Adjusting the image in the About Me page and creating the red border  */
+#about .col-left .about-img::after{
+content: '';
+position: absolute;
+left: -33px;
+top: 19px;
+height: 98%;
+width: 98%;
+border: 7px solid crimson;
+z-index: -1; /* Makes the border underneath the "Me" photo */
+}
+
+
+/* End About Section */
+
+/* Contact Section */
+
+/* Editing the layout of the section */
+#contact .contact{
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Editing all of our contact items image size */
+#contact .contact-items{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 0;
+}
+
+/* Editing the item in the contact section */
+#contact .contact-item{
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 18px 0 #0000002c;
+    transition: .3s ease box-shadow;
+}
+
+/* Making the hover effect */
+#contact .contact-item:hover{
+    box-shadow: 0px 0px 5px 0 #0000002c;
+}
+
+/* Editing the icons in the contact section */
+#contact .icon{
+    width: 70px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+/* Styling the header 1 in the contact section */
+#contact .contact-info h1{
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+/* Styling the header 2 in the contact section */
+#contact .contact-info h2{
+    font-size: 1.3rem;
+    line-height: 2rem;
+    font-weight: 500;
+}
+
+/* End Contact Section */
+
+/* Footer Section */
+
+/* Adding the background to the footer section */
+#footer{
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+}
+
+/* Editing the size of the footer */
+#footer .footer{
+    min-height: 200px;
+    flex-direction: column;
+    padding-top: 50px;
+    padding-bottom: 10px;
+}
+
+/* Editing the h2 in the footer */
+#footer h2{
+    color: white;
+    font-weight: 500;
+    font-size: 1.8rem;
+    letter-spacing: .1rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Editing the icons in the footer */
+#footer .social-icon{
+    display: flex;
+    margin-bottom: 30px;
+}
+
+/* Resizing the icons in the footer */
+#footer .social-item{
+    height: 50px;
+    width: 50px;
+    margin: 0 5px;
+}
+
+/* Making the icons black and white and adjusting smoothness */
+#footer .social-item img{
+    filter: grayscale(1);
+    transition: .3s ease filter;
+}
+
+/* Making the hover effect for icons and color */
+#footer .social-item:hover img{
+    filter: grayscale(0);
+}
+
+/* Makiing the paragraoh in the footer section white */
+#footer p{
+    color: white;
+    font-size: 1.3rem;
+}
+
+/* End Footer Section */
+
+
+/* Keyframes */
+/* Hamburger pulse animation */
+@keyframes hamburger_pulse{
+    0%{
+        opacity: 1;
+        transform: scale(1);
+    }
+    100%{
+        opacity: 0;
+        transform: scale(1.4);
+    }
+
+}
+/* Text reveal red box animation on the hello page */
+@keyframes text_reveal_box{
+    50%{
+        width: 100%;
+        left: 0;
+    }
+    100%{
+        width: 0;
+        left: 100%;
+    }
+}
+
+/* Text reveal animation on the hello page */
+@keyframes text_reveal{
+    100%{
+        color: white;
+    }
+
+}
+/* Rahul will be a different color */
+@keyframes text_reveal_name{
+    100%{
+        color: crimson;
+        font-weight: 500;
+    }
+
+}
+/* End Keyframes */
+
+/* Media Query for Tablet */
+
+@media only screen and (min-width: 768px){
+    /* Increasing the button size on the home screen */
+    .cta{
+        font-size: 2.5rem;
+        padding: 20px 60px;
+    }
+    /* Increasing the sections title sizes for tablet */
+    h1.section-title{
+        font-size: 6rem;
+    }
+
+    /* Hello */
+
+    /* Editing the size of the introduction statement fot tablet users */
+    #hello h1{
+        font-size: 7rem;
+    }
+
+    /* End Hello */
+
+    /* Service */
+    
+    /* Editing the size of the paragraph under the languages section for tablet users */
+    #services p{
+        font-size: 1.6rem;
+    }
+    
+    /* End Service */
+
+    /* Project */
+
+    /* Changing the format of the project section for tablets */
+    #projects .project-item{
+        flex-direction: row;
+    }
+
+    /* Putting image on the left size under project section for tablets */
+    #projects .project-item:nth-child(even){
+        flex-direction: row-reverse;
+    }
+
+    /* Editing the size of the project section for tablets */
+    #projects .project-item{
+        height: auto;
+        margin: 0;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    #projects .all-projects .project-info{
+        height: 100%;
+    }
+
+    #projects .all-projects .project-img{
+        height: 100%;
+    }
+
+    /* End Project */
+
+    /* About */
+
+    /* Editing the format of the about page for tablets */
+    #about .about{
+        flex-direction: row;
+    }
+
+    /* Editing the "Me" Photo for better tablet viewing */
+    #about .col-left{
+        width: 600px;
+        height: 400px;
+        padding-left: 16px;
+    }
+
+    /* Adjusting the red border and location of my photo for tablet viewing */
+    #about .about .col-left .about-img::after{
+        left: -45px;
+        top: 24px;
+        height: 98%;
+        width: 98%;
+        border: 10px solid crimson;
+        z-index: -1;
+    }
+
+    /* Adjusting the text on the about me page to have better fit for tablets */
+    #about .col-right{
+        text-align: left;
+        padding: 30px;
+    }
+
+    /* Adjusting h1 on the about me page to have a better fit for tablet viewing */
+    #about .col-right h1{
+        text-align: left;
+    }
+
+    /* End About */
+
+    /* Contact */
+
+    /* Adjusting the contact section format for tablet viewing */
+    #contact .contact{
+        flex-direction: column;
+        padding: 100px 0;
+        align-items: center;
+        justify-content: center;
+        min-height: 20vh;
+    }
+
+    /* Adjusting the contact items to be in a row */
+    #contact .contact-items{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: 20px;
+        margin: 0;
+    }
+
+    /* Adjusting the contact item for better viewing on a tablet */
+    #contact .contact-item{
+        margin: 20px;
+        flex-direction: row;
+    }
+
+    /* Adjusting the contact icons for better viewing on a tablet */
+    #contact .contact-item .icon{
+        height: 100px;
+        width: 100px;
+    }
+
+    /* Adjusting the icon image so that it does not cut off */
+    #contact .contact-item .icon img{
+        object-fit: contain;
+    }
+
+    /* Adjusting the contact info alignmnet for better viewing on a tablet */
+    #contact .contact-item .contact-info{
+        width: 100%;
+        text-align: left;
+        padding-left: 20px;
+    }
+
+    /* End Contact */
+
+}
+/* Media Query for Desktop */
+
+@media only screen and (min-width:1200px){
+    /* Header */
+
+    /* Removing the hamburger on desktop view */
+    #header .hamburger{
+        display: none;
+    }
+
+    /* Displaying the hamburger sections on the screen on desktop view */
+    #header .nav-list ul{
+        position: initial;
+        display: block;
+        height: auto;
+        width: fit-content;
+        background-color: transparent;
+    }
+
+    /* Making the hamburger sections in a line on desktop view */
+    #header .nav-list ul li{
+        display: inline-block;
+    }
+
+    /* Making the font size of the hamburger section smaller on desktop */
+    #header .nav-list ul li a{
+        font-size: 1.8rem;
+    }
+
+
+    #header .nav-list ul a:after{
+        display: none;
+    }
+
+    /* End Header */
+    
+    #services .service-bottom .service-item{
+        flex-basis: 22%;
+        margin: 1.5%;
+    }
+}
+
+/* End Media Query for Desktop */
+
+/* End Media Query for Tablet */
